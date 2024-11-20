@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchQuery" (ngModelChange)="searchUsers()"
+    placeholder="Pesquisar usuários"></ion-searchbar>
+
+  <app-users-accordion [users]="usuarios" (onRemoveUser)="removeUser($event)">
+  </app-users-accordion>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <app-custom-button-icon buttonType="add" [buttonColor]="'#649cff'" (onClick)="addUser()"></app-custom-button-icon>
+  </ion-fab>
+</ion-content>

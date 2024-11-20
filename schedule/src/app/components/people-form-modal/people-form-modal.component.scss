@@ -1,0 +1,63 @@
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-circle span {
+  font-size: 36px;
+  color: #888;
+}
+
+.form-fields-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-field {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+ion-item {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+ion-select {
+  width: 100%;
+}
+
+.select-margin {
+  margin-left: 15px !important;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

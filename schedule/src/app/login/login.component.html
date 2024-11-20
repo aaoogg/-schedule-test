@@ -1,0 +1,19 @@
+<ion-content class="login-content">
+  <div class="grid-container">
+    <div class="login-box">
+      <div class="icon-container">
+        <app-custom-icon [size]="100" [src]="'assets/icon/metaway.png'" altText="Ícone de Login"></app-custom-icon>
+      </div>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <app-custom-input labelText="Usuário" name="username" [(ngModel)]="username" required></app-custom-input>
+        <app-custom-input labelText="Senha" type="password" name="password" [(ngModel)]="password"
+          required></app-custom-input>
+        <div class="button-container">
+          <app-custom-button buttonType="entrar" (onClick)="onSubmit()">
+            Entrar
+          </app-custom-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

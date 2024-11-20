@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Usuários</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form">
+    <div class="form-fields-container">
+      <div *ngFor="let field of fields" class="form-field">
+        <app-custom-input *ngIf="field.type !== 'select'" [labelText]="field.label" [type]="field.type"
+          [placeholder]="field.placeholder || field.label" (errorChange)="onErrorChange($event)" [name]="field.name"
+          formControlName="{{ field.name }}">
+        </app-custom-input>
+        <div *ngIf="field.type === 'select'" style="margin-left: 18px;">
+          <label>{{ field.label }}</label>
+          <ion-select formControlName="{{ field.name }}">
+            <ion-select-option *ngFor="let option of field.options" [value]="option.value">
+              {{ option.label }}
+            </ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <app-custom-button buttonType="save" (onClick)="onSave(form)">
+        Salvar
+      </app-custom-button>
+      <app-custom-button buttonType="cancel" (onClick)="clear()">
+        Cancelar
+      </app-custom-button>
+    </div>
+  </form>
+</ion-content>

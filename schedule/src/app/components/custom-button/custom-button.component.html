@@ -1,0 +1,5 @@
+<ion-button [class]="buttonClass" [color]="buttonColor" (click)="onClick.emit()">
+  <ng-container *ngIf="buttonType === 'save'">Salvar</ng-container>
+  <ng-container *ngIf="buttonType === 'cancel'">Cancelar</ng-container>
+  <ng-container *ngIf="buttonType === 'entrar'">Entrar</ng-container>
+</ion-button>

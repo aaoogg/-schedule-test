@@ -1,0 +1,27 @@
+<ion-accordion-group #accordionGroup [value]="openedAccordion">
+  <ion-accordion *ngFor="let user of filteredUsers; let i = index" [value]="user.nome"
+    (click)="toggleAccordion(user.nome)">
+    <ion-item slot="header" color="light">
+      <ion-label>{{ user.nome }}</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <p *ngIf="user.cpf"><strong>CPF:</strong> {{ user.cpf }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Telefone:</strong> {{ user.telefone }}</p>
+      <p><strong>Data de Nascimento:</strong> {{ user.dataNascimento | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+
+      <app-custom-button-icon buttonType="edit" (onClick)="editUser(user)" buttonColor="var(--ion-color-primary)"
+        [disabled]="false" title="Editar">
+      </app-custom-button-icon>
+
+      <app-custom-button-icon buttonType="lock" (onClick)="editPassword(user)" buttonColor="var(--ion-color-warning)"
+        [disabled]="false" title="Editar Senha">
+      </app-custom-button-icon>
+
+      <app-custom-button-icon buttonType="delete" (onClick)="deleteUser(user)" buttonColor="var(--ion-color-danger)"
+        [disabled]="false" title="Deletar">
+      </app-custom-button-icon>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>

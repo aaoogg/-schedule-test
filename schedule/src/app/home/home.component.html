@@ -1,0 +1,13 @@
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchQuery" (ngModelChange)="searchContacts()"
+    placeholder="Pesquisar contatos"></ion-searchbar>
+
+  <app-contacts-accordion [contacts]="contacts" (onEditContact)="editContact($event.contact)"
+    (onRemoveContact)="removeContact($event)">
+  </app-contacts-accordion>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <app-custom-button-icon buttonType="add" [buttonColor]="'#649cff'"
+      (onClick)="addContact()"></app-custom-button-icon>
+  </ion-fab>
+</ion-content>

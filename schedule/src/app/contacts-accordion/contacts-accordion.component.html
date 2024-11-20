@@ -1,0 +1,47 @@
+<ion-accordion-group #accordionGroup [value]="openedAccordion">
+  <ion-accordion *ngFor="let contact of filteredContacts; let i = index" [value]="contact.pessoa.nome">
+    <ion-item slot="header" color="light">
+      <div class="photo-container">
+        <img [src]="contact.fotoUrl" alt="{{ contact.pessoa.nome }}" class="contact-photo" />
+      </div>
+      <ion-label>
+        <h2>{{ contact.pessoa.nome }}</h2>
+        <h3>{{ contact.usuario.telefone }}</h3>
+      </ion-label>
+
+      <ion-button aria-label="Favorite" [color]="contact.privado ? 'danger' : 'secondary'"
+        (click)="toggleFavorite(contact); $event.stopPropagation()">
+        <ion-icon [name]="contact.privado ? 'heart' : 'heart'" aria-hidden="true"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <div class="ion-padding" slot="content">
+      <div class="data-block">
+        <h3>Informações</h3>
+        <p><strong>Email:</strong> {{ contact.usuario.email }}</p>
+        <p><strong>CPF:</strong> {{ contact.pessoa.cpf }}</p>
+        <p><strong>Data de Nascimento:</strong> {{ contact.usuario.dataNascimento | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Username:</strong> {{ contact.usuario.username }}</p>
+      </div>
+
+      <div class="data-block">
+        <h3>Endereço</h3>
+        <p><strong>Logradouro:</strong> {{ contact.pessoa.endereco.logradouro }}</p>
+        <p><strong>Número:</strong> {{ contact.pessoa.endereco.numero }}</p>
+        <p><strong>Bairro:</strong> {{ contact.pessoa.endereco.bairro }}</p>
+        <p><strong>Cidade:</strong> {{ contact.pessoa.endereco.cidade }}</p>
+        <p><strong>Estado:</strong> {{ contact.pessoa.endereco.estado }}</p>
+        <p><strong>CEP:</strong> {{ contact.pessoa.endereco.cep }}</p>
+        <p><strong>País:</strong> {{ contact.pessoa.endereco.pais }}</p>
+      </div>
+
+      <div class="test">
+        <app-custom-button-icon buttonType="edit" (onClick)="editContact(contact)"
+          buttonColor="var(--ion-color-primary)" [disabled]="false" title="Editar"></app-custom-button-icon>
+
+        <app-custom-button-icon buttonType="delete" (onClick)="removeContact(contact)"
+          buttonColor="var(--ion-color-danger)" [disabled]="false" title="Deletar"></app-custom-button-icon>
+      </div>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>

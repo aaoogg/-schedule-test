@@ -1,0 +1,35 @@
+<ion-accordion-group #accordionGroup [value]="openedAccordion">
+  <ion-accordion *ngFor="let person of filteredPersons; let i = index" [value]="person.nome">
+    <ion-item slot="header" color="light">
+      <div class="photo-container">
+        <div class="photo-container">
+          <img [src]="person.fotoUrl" alt="{{ person.nome }}" class="person-photo" />
+        </div>
+      </div>
+      <ion-label>
+        <h2>{{ person.nome }}</h2>
+        <h3> CPF: {{ person.cpf }}</h3>
+      </ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <div class="data-block">
+        <h3>Endereço</h3>
+        <p><strong>Logradouro:</strong> {{ person.endereco.logradouro }}</p>
+        <p><strong>Número:</strong> {{ person.endereco.numero }}</p>
+        <p><strong>Bairro:</strong> {{ person.endereco.bairro }}</p>
+        <p><strong>Cidade:</strong> {{ person.endereco.cidade }}</p>
+        <p><strong>Estado:</strong> {{ person.endereco.estado }}</p>
+        <p><strong>CEP:</strong> {{ person.endereco.cep }}</p>
+        <p><strong>País:</strong> {{ person.endereco.pais }}</p>
+      </div>
+
+      <div class="test">
+        <app-custom-button-icon buttonType="edit" (onClick)="editPerson(person)" buttonColor="var(--ion-color-primary)"
+          [disabled]="false" title="Editar"></app-custom-button-icon>
+
+        <app-custom-button-icon buttonType="delete" (onClick)="removePerson(person)"
+          buttonColor="var(--ion-color-danger)" [disabled]="false" title="Deletar"></app-custom-button-icon>
+      </div>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>
